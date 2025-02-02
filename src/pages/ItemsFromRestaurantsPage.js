@@ -11,22 +11,24 @@ function ItemsFromRestaurantPage() {
 
     const [itemsFromRestaurantlist, setItemsFromRestaurantlist] = useState([])
     const [loading, setLoading] = useState(true)
+
+
     
     useEffect(() => {
         fetch(`/restaurants/${rId.slice(42)}`)
         .then(resp => resp.json())
         .then(restaurant => {
-            Loading()
+            const loading = () => {
+                setLoading(!loading);
+              };
+            loading()
             const resName = restaurant["name"]
             setItemsFromRestaurantlist(restaurant["items"].map(object => {
                 return <ItemCard key={uuidv4()} id={object.id} name={object.name} price={object.price} restaurant={resName} customer_id={customer_id}/>
             }))
         })
-    }, [rId])
+    },[rId])
 
-    function Loading(){
-        setLoading(!loading)
-    }
 
     return (
         <div className="itemsFromRestaurant">

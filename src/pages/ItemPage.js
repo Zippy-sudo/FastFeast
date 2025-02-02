@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import NavBar from "../components/Navbar";
 import ItemCard from "../components/ItemCard";
 import { useFormik } from "formik";
@@ -13,10 +13,6 @@ const [itemsList, setItemsList] = useState([])
 const [addingItem, setAddingItem] = useState(false)
 const [loading, setLoading] = useState(true)
 
-function Loading(){
-    setLoading(!loading)
-}
-
 function HandleAddAnItemClick(){
     setAddingItem(!addingItem)
 }
@@ -26,9 +22,12 @@ useEffect(() => {
     .then((resp) => resp.json())
     .then((list) => {
         setItemsList(list)
-        Loading()
+        const loading = () => {
+            setLoading(!loading);
+          };
+        loading()
     })
-}, [addingItem])
+}, [addingItem, loading])
 
     const addItemForm = useFormik({
         initialValues: {

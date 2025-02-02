@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useFormik } from "formik"
 import * as Yup from 'yup'
 import { v4 as uuidv4 } from "uuid"
@@ -16,33 +16,12 @@ function OrderPage(){
     const [item_id, setItem_id] = useState(0)
     const [loading, setLoading] = useState(true)
 
-    function HandleAddReviewClick(a) {
+    const HandleAddReviewClick = useCallback((a) => {
         setAddReview(!addReview)
         setItem_id(a)
-    }
+    }, [addReview])
 
-    function Loading(){
-        setLoading(!loading)
-    }
-
-    useEffect(() => {
-        fetch(`/customers/${customer_id}`)
-        .then(resp => resp.json())
-        .then(customer => {
-            Loading()
-            setOrdersList(customer["orders"].map(object => {
-                return <Order key={uuidv4()} id={object["id"]} name={object["item"]["name"]} restaurant={object["item"]["restaurant"]["name"]} price={object["item"]["price"]} amount={object["amount"]} item_id={object["item_id"]} HandleDeleteClick={HandleDeleteClick} HandleAddReviewClick={HandleAddReviewClick}/>
-            }))
-            let a = 0
-            for (let orders = 0; orders < (customer["orders"]).length ; orders++) {
-                a += (parseInt(customer["orders"][orders]["item"]["price"]) * parseInt(customer["orders"][orders]["amount"]))
-            }
-            setGrandTotal(a)
-        })
-        .catch(error => alert("Error", error))
-    }, [refreshPage])
-
-    function HandleDeleteClick(event) {
+    const HandleDeleteClick = useCallback((event) => {
         fetch(`/orders/${parseInt(event.target.id)}`, {
             method: "DELETE",
         })
@@ -54,7 +33,27 @@ function OrderPage(){
             alert("Delete Failed")
             console.log(error)
         })
-    }
+    }, [refreshPage])
+
+    useEffect(() => {
+        fetch(`/customers/${customer_id}`)
+        .then(resp => resp.json())
+        .then(customer => {
+            const loading = () => {
+                setLoading(!loading)
+              };
+            loading()
+            setOrdersList(customer["orders"].map(object => {
+                return <Order key={uuidv4()} id={object["id"]} name={object["item"]["name"]} restaurant={object["item"]["restaurant"]["name"]} price={object["item"]["price"]} amount={object["amount"]} item_id={object["item_id"]} HandleDeleteClick={HandleDeleteClick} HandleAddReviewClick={HandleAddReviewClick}/>
+            }))
+            let a = 0
+            for (let orders = 0; orders < (customer["orders"]).length ; orders++) {
+                a += (parseInt(customer["orders"][orders]["item"]["price"]) * parseInt(customer["orders"][orders]["amount"]))
+            }
+            setGrandTotal(a)
+        })
+        .catch(error => alert("Error", error))
+    }, [refreshPage, HandleAddReviewClick, HandleDeleteClick])
 
     const addReviewForm = useFormik({
         initialValues: {

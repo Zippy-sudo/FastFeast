@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import RestaurantCard from "../components/RestaurantCard";
 import NavBar from "../components/Navbar";
 import { v4 as uuidv4 } from "uuid"
@@ -17,16 +17,15 @@ function RestaurantPage() {
         .then(resp => resp.json())
         .then(list => {
             setRestaurants(list)
-            Loading()
+            const loading = () => {
+                setLoading(!loading);
+              };
+              loading()
         })
         .catch(error => {
             alert(error)
         })
     }, [addingRestaurant])
-
-    function Loading(){
-        setLoading(!loading)
-    }
 
     function HandleViewItemsClick(event) {
         fetch(`/restaurants/${event.target.id}`)
