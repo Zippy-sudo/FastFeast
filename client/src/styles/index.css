@@ -1,0 +1,412 @@
+body, div#root{
+    margin: 0;
+    padding: 0;
+}
+
+nav.navBar{
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    background-color: orange;
+}
+
+div.logo{
+    display: flex;
+    font-size: x-large;
+    font-weight: 900;
+    color: black;
+    width: 15vw;
+    justify-content: space-between;
+    align-items: center;
+    margin:1vh 2vw;
+}
+
+img.navIcon{
+    height: 10vh;
+    width: 7vw;
+    border: 2px solid green;
+    border-radius: 50%;
+    box-shadow: 0 0.5vw 0.5vh 0 rgba(0, 0, 0.2);
+}
+
+div.links{
+    display: flex;
+    width:85vw;
+    justify-content: space-around;
+}
+
+a.nav-link {
+    padding: 1vh 2vw;
+    background-color: rgb(206, 160, 126);
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 0.5vw 0.5vh 0 rgba(0, 0, 0.2);
+}
+
+a.nav-link.active{
+    padding: 1vh 2vw;
+    background-color: rgb(210, 170, 140);
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    border: 2px solid rgb(250, 227, 20);
+    box-shadow: 0 1vw 1vh 0 rgba(0, 0, 0.2);
+}
+
+
+/* HomePage */
+div.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../assets/restaurants.png");
+    background-size: cover;
+    color: beige;
+}
+
+div.welcome{
+    margin: 1vh 0vw;
+    padding: 2vh 2vw;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 50%;
+}
+
+div.fastFoodFacts{
+    display: flex;
+    flex-direction: column;
+    padding: 0vh 2vw 5vh;
+    margin: 3vh;
+    background-color: rgba(0,0,0,0.6);
+}
+
+h2.dYK{
+    padding-top: 2vh;
+    font-size: larger;
+    text-align: center;
+    text-decoration: underline;
+}
+
+div.fFHist{
+    font-size: large;
+    display: flex;
+    align-items: center;
+    color:black;
+    margin: 0 12vw 2vh;
+    padding: 2vh;
+    background-color: rgb(215, 252, 212);
+    border-radius: 25px;
+    float: left;
+}
+
+div.wL{
+    display: flex;
+    flex-direction: column;
+}
+
+div.wB{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+div.fFHist div.wP img{
+    height: 10vh;
+    width: 10vw;
+    padding: .5vw;
+    border-radius: 50%;
+    float: left;
+}
+
+div.fFHist a.nav-link{
+    padding: .5vh 1vw;
+    margin: .2vh .5vw;
+    background-color: rgb(103, 148, 54);
+    border-radius: 10px;
+    text-decoration: underline;
+    color: black;
+    box-shadow: 0 0.5vw 0.5vh 0 rgba(0, 0, 0.2);
+}
+
+
+/* Restaurants */
+
+div.restaurants{
+    min-height: 100vh;
+    background-image: url("../assets/restaurantbackground.png");
+    background-size: cover;
+}
+
+div.restaurantSearch{
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 2vw;
+    align-items: center;
+}
+
+div.restaurantSearch div{
+    margin: 1vh;
+    width: 30vw;
+}
+
+div.restaurantSearch input{
+    width: 29vw;
+    padding: .1vh .2vw;
+}
+
+div.actualRestaurants{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2vh 0vw 0vh;
+}
+
+div.restaurantDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh 2vw;
+    margin: 3vh 0vw;
+    justify-content: space-between;
+    background-color: rgb(234, 226, 183);
+    box-shadow: 0vh 1vw 2vh 0 rgba(0, 0, 0.2);
+    color: black;
+    border: 2px solid black;
+}
+
+div.restaurantDiv:hover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh 2vw;
+    justify-content: space-between;
+    background-color: rgba(216, 87, 42);
+    box-shadow: 0vh 2vw 4vh 0 rgba(0, 0, 0.2);
+    color: beige;
+}
+
+img.restaurantImage{
+    height: 13vh;
+    width: 13vw;
+    border-radius: 50%;
+    border: 3px solid lightblue;
+}
+
+div.addRestaurant{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    margin: 0vh 10vw;
+    padding: 2vh 5vw;
+}
+
+div.addRestaurant form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Items */
+
+div.itemPage{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/itemsBackground.png");
+    background-size: cover;
+}
+
+div.itemSearch{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh 0;
+}
+
+div.itemSearch div{
+    margin: 1vh;
+    width: 30vw;
+}
+
+div.itemSearch input{
+    width: 29vw;
+    padding: .1vh .2vw;
+}
+
+div.actualItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 5vh 0vw;
+}
+
+div.itemDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 253, 189);
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
+    box-shadow: 0vh 1vw 2vh 0 rgba(0, 0, 0.2);
+}
+
+div.itemDiv:hover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(247, 127, 0);
+    color: azure;
+    padding: 1vh 1vw;
+    box-shadow: 0vh 2vw 4vh 0 rgba(0, 0, 0.9);
+}
+
+div.itemDiv div.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 1vh 0vw;
+}
+
+div.amountError{
+    text-align: center;
+    background-color: white;
+}
+
+img.itemImage{
+    height:15vh;
+    width: 10vw;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+div.addItem{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    margin: 2vh 10vw;
+    padding: 2vh 5vw;
+}
+
+div.addItem form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Items from Restaurant */
+
+div.itemsFromRestaurant{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url("../assets/itemsBackground.png");
+    background-size: cover;
+}
+
+/* My Cart */
+
+div.orderPage{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url("../assets/ordersBackground.png");
+    background-size: cover;
+}
+
+div.actualOrders{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    margin: 2vh  20vw;
+    padding: 0.5vh 5vw;
+}
+
+table.orders {
+    border: 2px solid black;
+    background-color: black;
+}
+
+tr{
+    border: 2px solid black;
+    background-color: beige;
+}
+
+tr:first-child{
+    background-color: rgb(0, 48, 73);
+    color: aliceblue;
+}
+
+tr.addReview{
+    color: white;
+}
+
+div.orderButtons{
+    display: flex;
+    justify-content: space-between;
+}
+
+div.reviewButtons{
+    display: flex;
+    justify-content: space-between;
+}
+
+div.ordersTotal{
+background-color: rgb(206, 227, 247);
+text-align: center;
+padding: 1vh 2vw;
+margin: 2vh 0vw;
+box-shadow: 0 1vw 2vh rgba(0,0,0,0.6);
+}
+
+/* My Reviews */
+
+div.reviewsPage{
+    background-color: rgb(50, 55, 59);
+    min-height: 100vh;
+}
+
+div.actualReviews{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(50, 55, 59);
+    height: 100vh;
+}
+
+div.review{
+    width: 25vw;
+    background-color: rgb(243, 249, 210);
+    margin: 2vh 0vw;
+    border: 1px solid black;
+}
+
+div.review div.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+div.review div.content{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+div.review div.buttons{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+div.review div.buttons button.edit{
+    background-color: green;
+}
+
+div.review div.buttons button.delete{
+    background-color: red;
+}
+
+div.divEditButtons{
+    display: flex;
+    justify-content: space-between;
+}

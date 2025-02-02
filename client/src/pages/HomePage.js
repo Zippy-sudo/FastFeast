@@ -1,11 +1,14 @@
-import App from "../components/App";
+import NavBar from "../components/Navbar"
+import App from "../components/App"
 
 function Home() {
     return (
-        <div>
-            <h1> Welcome to FastFeast</h1>
-            <App />
-        </div>
+        <>
+            <header>
+                <NavBar/>
+            </header>
+            <App/>
+        </>
     )
 }
 
