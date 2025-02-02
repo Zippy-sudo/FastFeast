@@ -225,8 +225,8 @@ class Reviews(Resource):
         new_review_data = request.get_json()
         new_review = Review(
             content=new_review_data.get("content"),
-            customer=new_review_data.get("customer"),
-            item=new_review_data.get("item")
+            customer_id=new_review_data.get("customer_id"),
+            item_id=new_review_data.get("item_id")
             )
         db.session.add(new_review)
         db.session.commit()
@@ -293,8 +293,8 @@ class Orders(Resource):
         new_order_data = request.get_json()
         new_order = Order(
             amount = new_order_data.get("amount"),
-            customer= new_order_data.get("customer"),
-            item=new_order_data.get("item")
+            customer_id= new_order_data.get("customer_id"),
+            item_id=new_order_data.get("item_id")
             )
         db.session.add(new_order)
         db.session.commit()
@@ -332,7 +332,7 @@ class OrderById(Resource):
             return make_response({"Error": "No such Order"}, 404)
         
     def delete(self, id):
-        order = Review.query.filter_by(id = id).first()
+        order = Order.query.filter_by(id = id).first()
 
         if order:
             db.session.delete(order)

@@ -11,7 +11,7 @@ class Customer(db.Model, SerializerMixin):
     orders = db.relationship("Order", back_populates="customer", cascade="all,delete-orphan")
     reviews = db.relationship("Review", back_populates="customer", cascade="all,delete-orphan")
 
-    serialize_rules = ('-orders.customer', '-orders.item', '-reviews.customer', '-reviews.item')
+    serialize_rules = ('-orders.customer', '-reviews.customer')
     
     def __repr__(self):
         return f"<Name:{self.name}>"
@@ -28,7 +28,7 @@ class Review(db.Model, SerializerMixin):
     customer = db.relationship("Customer", back_populates="reviews")
     item = db.relationship("Item", back_populates="reviews")
 
-    serialize_rules = ('-customer.orders', '-customer.reviews', '-item.restaurant', '-item.orders', 'item.reviews')
+    serialize_rules = ('-customer.orders', '-customer.reviews', '-item.orders', 'item.reviews')
 
     def __repr__(self):
         return f"<Customer:{self.customer}, Item:{self.item}, Content:{self.content}>"
