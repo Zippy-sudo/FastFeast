@@ -24,7 +24,7 @@ function ItemCard({id, name, price, restaurant, customer_id }) {
             .required("Required")
         }),
         onSubmit: (values, actions) => {
-            fetch(`/orders`, {
+            fetch(`https://fastfeast-app-hma0.onrender.com/orders`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "Application/JSON",

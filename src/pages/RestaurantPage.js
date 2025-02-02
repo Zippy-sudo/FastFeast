@@ -13,7 +13,7 @@ function RestaurantPage() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`/restaurants`)
+        fetch(`https://fastfeast-app-hma0.onrender.com/restaurants`)
         .then(resp => resp.json())
         .then(list => {
             setRestaurants(list)
@@ -28,7 +28,7 @@ function RestaurantPage() {
     }, [addingRestaurant])
 
     function HandleViewItemsClick(event) {
-        fetch(`/restaurants/${event.target.id}`)
+        fetch(`https://fastfeast-app-hma0.onrender.com/restaurants/${event.target.id}`)
         .then(resp => resp.json())
         .then((dict) => {
             return <ItemsFromRestaurantPage />
@@ -58,7 +58,7 @@ function RestaurantPage() {
             .required("Required"),
         }),
         onSubmit: (values, actions) => {
-            fetch('/restaurants', {
+            fetch('https://fastfeast-app-hma0.onrender.com/restaurants', {
                 method: "POST",
                 headers: {
                     "Content-Type": "Application/JSON",

@@ -16,7 +16,7 @@ function ReviewsPage() {
     }, [refreshReviewPage])
 
     const HandleDeleteClick= useCallback((event) => {
-        fetch(`/reviews/${parseInt(event.target.id)}`, {
+        fetch(`https://fastfeast-app-hma0.onrender.com/reviews/${parseInt(event.target.id)}`, {
             method: "DELETE",
         })
         .then(alert("Review deleted Succesfully"))
@@ -25,7 +25,7 @@ function ReviewsPage() {
     }, [refreshReviewPage])
 
     useEffect(() => {
-        fetch(`/customers/1`)
+        fetch(`https://fastfeast-app-hma0.onrender.com/customers/${customer_id}`)
         .then((resp) => resp.json())
         .then(customer => {
             const loading = () => {

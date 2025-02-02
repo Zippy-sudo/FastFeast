@@ -15,7 +15,7 @@ function ItemsFromRestaurantPage() {
 
     
     useEffect(() => {
-        fetch(`/restaurants/${rId.slice(42)}`)
+        fetch(`https://fastfeast-app-hma0.onrender.com/restaurants/${rId.slice(42)}`)
         .then(resp => resp.json())
         .then(restaurant => {
             const loading = () => {

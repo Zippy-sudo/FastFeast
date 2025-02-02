@@ -23,7 +23,7 @@ function Review({id, name, restaurant, price, content, item_id, customer_id, Han
             .required("Required")
         }),
         onSubmit: (values, actions) => {
-            fetch(`/reviews/${id}`, {
+            fetch(`https://fastfeast-app-hma0.onrender.com/reviews/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "Application/JSON",

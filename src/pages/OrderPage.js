@@ -22,7 +22,7 @@ function OrderPage(){
     }, [addReview])
 
     const HandleDeleteClick = useCallback((event) => {
-        fetch(`/orders/${parseInt(event.target.id)}`, {
+        fetch(`https://fastfeast-app-hma0.onrender.com/orders/${parseInt(event.target.id)}`, {
             method: "DELETE",
         })
         .then(() => {
@@ -36,7 +36,7 @@ function OrderPage(){
     }, [refreshPage])
 
     useEffect(() => {
-        fetch(`/customers/${customer_id}`)
+        fetch(`https://fastfeast-app-hma0.onrender.com/customers/${customer_id}`)
         .then(resp => resp.json())
         .then(customer => {
             const loading = () => {
@@ -68,7 +68,7 @@ function OrderPage(){
             .required('Required')
         }),
         onSubmit: (values, actions) => {
-            fetch('/reviews', {
+            fetch('https://fastfeast-app-hma0.onrender.com/reviews', {
                 method: "POST",
                 headers: {
                     "Content-Type": "Application/JSON",

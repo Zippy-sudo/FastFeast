@@ -18,7 +18,7 @@ function HandleAddAnItemClick(){
 }
 
 useEffect(() => {
-    fetch(`/items`)
+    fetch(`https://fastfeast-app-hma0.onrender.com/items`)
     .then((resp) => resp.json())
     .then((list) => {
         setItemsList(list)
@@ -50,7 +50,7 @@ useEffect(() => {
             .required("Required"),
         }),
         onSubmit: (values, actions) => {
-            fetch('/items', {
+            fetch('https://fastfeast-app-hma0.onrender.com/items', {
                 method: "POST",
                 headers: {
                     "Content-Type": "Application/JSON",
