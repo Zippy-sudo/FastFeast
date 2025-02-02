@@ -1,6 +1,6 @@
-# Restaurant Management App - Frontend
+# Fast Feast App - Frontend
 
-Welcome to the **Fastfeast App** frontend! This web application allows users to add, update, delete, and view restaurants, menu items, orders, and reviews. The app is built using **React** with **Create React App** and connects to a backend [FastFeast](https://github.com/Zippy-sudo/fastfeast_app) to manage restaurant-related data.
+Welcome to the **Fastfeast App** frontend! This web application allows users to add, update, delete, and view restaurants, menu items, orders, and reviews. The app is built using **React** with **Create React App** and connects to a backend [fastfeast_app](https://github.com/Zippy-sudo/fastfeast_app) to manage restaurant-related data.
 
 ---
 
