@@ -1,0 +1,6 @@
+/                            /
+/restaurants                 /restaurants
+/items                       /items
+/itemsfromrestaurant/*       /itemsfromrestaurant/*
+/myCart                      /myCart
+/myReviews                   /myReviews
