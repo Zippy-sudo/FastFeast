@@ -9,9 +9,14 @@ function ReviewsPage() {
 
     const [reviewsList, setReviewsList] = useState([])
     const [refreshReviewPage, setRefreshReviewPage] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     function JogMe(){
         setRefreshReviewPage(!refreshReviewPage)
+    }
+
+    function Loading(){
+        setLoading(!loading)
     }
 
     function HandleDeleteClick(event){
@@ -27,6 +32,7 @@ function ReviewsPage() {
         fetch(`/customers/1`)
         .then((resp) => resp.json())
         .then(customer => {
+            Loading()
             setReviewsList(customer["reviews"].map(object => {
                 return <Review key={uuidv4()} id={object["id"]} name={object["item"]["name"]} restaurant={object["item"]["restaurant"]["name"]} price={object["item"]["price"]} content={object["content"]} item_id={object["item"]["id"]} HandleDeleteClick={HandleDeleteClick} customer_id={customer_id} JogMe={JogMe}/>
             }))
@@ -37,9 +43,13 @@ function ReviewsPage() {
             <header>
                 <NavBar/>
             </header>
+            {loading ? 
+            <div className="loading"><p>Loading...</p></div>
+            :
             <div className="actualReviews">
             {reviewsList}
             </div>
+            }
         </div>
     )
 }

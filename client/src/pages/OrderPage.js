@@ -14,11 +14,22 @@ function OrderPage(){
     const [grandTotal, setGrandTotal] = useState(0)
     const [addReview, setAddReview] = useState(false)
     const [item_id, setItem_id] = useState(0)
+    const [loading, setLoading] = useState(true)
+
+    function HandleAddReviewClick(a) {
+        setAddReview(!addReview)
+        setItem_id(a)
+    }
+
+    function Loading(){
+        setLoading(!loading)
+    }
 
     useEffect(() => {
         fetch(`/customers/${customer_id}`)
         .then(resp => resp.json())
         .then(customer => {
+            Loading()
             setOrdersList(customer["orders"].map(object => {
                 return <Order key={uuidv4()} id={object["id"]} name={object["item"]["name"]} restaurant={object["item"]["restaurant"]["name"]} price={object["item"]["price"]} amount={object["amount"]} item_id={object["item_id"]} HandleDeleteClick={HandleDeleteClick} HandleAddReviewClick={HandleAddReviewClick}/>
             }))
@@ -31,19 +42,14 @@ function OrderPage(){
         .catch(error => alert("Error", error))
     }, [refreshPage])
 
-    function HandleAddReviewClick(a){
-        setAddReview(!addReview)
-        setItem_id(a)
-    }
-
     function HandleDeleteClick(event) {
         fetch(`/orders/${parseInt(event.target.id)}`, {
             method: "DELETE",
         })
-        .then(ans => {
+        .then(() => {
             setRefreshPage(!refreshPage)
             alert("Delete Successful")
-        })
+    })
         .catch(error => {
             alert("Delete Failed")
             console.log(error)
@@ -86,6 +92,10 @@ function OrderPage(){
                 <Navbar/>
             </header>
             <div className="actualOrders">
+                {loading ?
+                <div className="loading"><p>Loading...</p></div>
+                : 
+                <>
                 <table className="orders">
                     <tbody>
                     <tr>
@@ -108,7 +118,9 @@ function OrderPage(){
                         <p>{grandTotal} (KES)</p>
                     </div>
                     <button>Pay</button>
-                </div>
+                    </div>
+                    </>
+                }
                 {addReview ?
                     <div className="addReview">
                             <form onSubmit={addReviewForm.handleSubmit}>

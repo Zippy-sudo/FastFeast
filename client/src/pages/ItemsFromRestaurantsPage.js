@@ -10,26 +10,36 @@ function ItemsFromRestaurantPage() {
     const rId = window.location.href
 
     const [itemsFromRestaurantlist, setItemsFromRestaurantlist] = useState([])
+    const [loading, setLoading] = useState(true)
     
     useEffect(() => {
         fetch(`/restaurants/${rId.slice(42)}`)
         .then(resp => resp.json())
         .then(restaurant => {
+            Loading()
             const resName = restaurant["name"]
             setItemsFromRestaurantlist(restaurant["items"].map(object => {
                 return <ItemCard key={uuidv4()} id={object.id} name={object.name} price={object.price} restaurant={resName} customer_id={customer_id}/>
             }))
         })
-    }, [])
+    }, [rId])
+
+    function Loading(){
+        setLoading(!loading)
+    }
 
     return (
         <div className="itemsFromRestaurant">
             <header>
                 <NavBar/>
             </header>
+            {loading ?
+            <div className="loading"><p>Loading...</p></div>
+            :
             <div className="actualItems">
                 {itemsFromRestaurantlist}
             </div>
+            }
         </div>
     )
 }

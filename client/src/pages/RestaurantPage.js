@@ -10,17 +10,23 @@ function RestaurantPage() {
 
     const [restaurants, setRestaurants] = useState([])
     const [addingRestaurant, setAddingRestaurant]  = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch(`/restaurants`)
         .then(resp => resp.json())
         .then(list => {
             setRestaurants(list)
+            Loading()
         })
         .catch(error => {
             alert(error)
         })
     }, [addingRestaurant])
+
+    function Loading(){
+        setLoading(!loading)
+    }
 
     function HandleViewItemsClick(event) {
         fetch(`/restaurants/${event.target.id}`)
@@ -63,6 +69,7 @@ function RestaurantPage() {
             .then(() => {
                 alert("Successfully Posted")
                 setAddingRestaurant(!addingRestaurant)
+                actions.resetForm()
         })
             .catch(error => alert("Error",error))
         }
@@ -108,11 +115,15 @@ function RestaurantPage() {
                 <div><input type="text" placeholder="Search for Restaurant..."/></div>
                 <button onClick={HandleAddARestaurantClick}>Add a Restaurant</button>
             </div>
-            <div className="actualRestaurants">
-            {restaurantsList}
-            </div>
-            </>
+            { loading ? 
+                <div className="loading"><p>Loading...</p></div>
+            :
+                <div className="actualRestaurants">
+                {restaurantsList}
+                </div>
             }
+            </>
+        }
         </div>
     )
 }

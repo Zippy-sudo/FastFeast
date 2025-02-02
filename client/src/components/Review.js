@@ -34,7 +34,7 @@ function Review({id, name, restaurant, price, content, item_id, customer_id, Han
             alert("Patched Successfully")
             JogMe()
         })
-        .catch(error => ("Failed to patch", error))
+        .catch(error => (`Failed to patch ${error}`))
         actions.resetForm()
         HandleEditSubmit()
         }

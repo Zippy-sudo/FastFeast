@@ -11,6 +11,11 @@ const customer_id = 1
 
 const [itemsList, setItemsList] = useState([])
 const [addingItem, setAddingItem] = useState(false)
+const [loading, setLoading] = useState(true)
+
+function Loading(){
+    setLoading(!loading)
+}
 
 function HandleAddAnItemClick(){
     setAddingItem(!addingItem)
@@ -21,6 +26,7 @@ useEffect(() => {
     .then((resp) => resp.json())
     .then((list) => {
         setItemsList(list)
+        Loading()
     })
 }, [addingItem])
 
@@ -109,15 +115,21 @@ const itemsListDisplay = itemsList.map(object => {
                 </div>
             : 
             <>
-            <div className="itemSearch">
+                { loading ?
+                    <div className="loading"><p>Loading...</p></div>
+                :
+                <>
+                <div className="itemSearch">
                 <div>
                     <input type="text" placeholder="Search for Item"/>
                 </div>
                 <button onClick={HandleAddAnItemClick}>Add an item</button>
-            </div>
-            <div className="actualItems">
-            {itemsListDisplay}
-            </div>
+                </div>
+                <div className="actualItems">
+                {itemsListDisplay}
+                </div>
+                </>
+                }
             </>
             }
         </div>
